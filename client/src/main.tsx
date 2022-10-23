@@ -7,6 +7,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // Bootstrap Bundle JS
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
+import './assets/sass/global.scss'
+
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <App />
