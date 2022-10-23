@@ -1,9 +1,9 @@
-import React from 'react'
+import MainLayout from "./layouts/Main"
 
 export default function App() {
   return (
-    <div>
-      Client
-    </div>
+    <MainLayout>
+      <div>Client</div>
+    </MainLayout>
   )
 }

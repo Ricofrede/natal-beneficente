@@ -16,6 +16,8 @@ Simply run the command `make up` to spin it up. Once the containers finish up bu
 - Firebase 9
 - FireCMS 2.0.0-alpha.41
 - Material UI 5
+- SASS 1.55
+- Bootstrap 5.2.2
 
 ## Important Commands
 
