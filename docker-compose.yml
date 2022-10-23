@@ -1,0 +1,39 @@
+version: '3.7'
+services:
+
+  natal-admin:
+    container_name: natal-admin
+    env_file:
+      - .env
+    restart: always
+    build:
+      context: ./admin
+    environment:
+      - REACT_APP_PUBLIC_URL=${REACT_APP_PUBLIC_URL_ADMIN}
+    volumes:
+      - ./admin:/app
+      - /app/node_modules
+    ports:
+      - 3001:5173
+    networks:
+      - net-natal
+
+  natal-client:
+    container_name: natal-client
+    env_file:
+      - .env
+    restart: always
+    build:
+      context: ./client
+    environment:
+      - REACT_APP_PUBLIC_URL=${REACT_APP_PUBLIC_URL_CLIENT}
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    ports:
+      - 3000:5173
+    networks:
+      - net-natal
+
+networks:
+  net-natal:
