@@ -1,12 +1,15 @@
 import {
     buildCollection,
     buildProperty,
+    EntityReference
 } from "@camberi/firecms";
 
 type Page = {
     name: string;
+    shortName: string;
+    importance: number;
     status: string;
-    image: string;
+    image: EntityReference;
     intro: string;
     content: string[];
 }
@@ -24,9 +27,18 @@ const pagesCollection = buildCollection<Page>({
     }),
     properties: {
         name: {
-            name: "Name",
+            name: "Nome",
             validation: { required: true },
             dataType: "string"
+        },
+        shortName: {
+            name: "Nome Curto",
+            validation: { required: true },
+            dataType: "string"
+        },
+        importance: {
+            name: "Nível de Importância",
+            dataType: "number"
         },
         status: {
             name: "Status",
@@ -38,13 +50,10 @@ const pagesCollection = buildCollection<Page>({
                 public: "Publico"
             }
         },
-        image: buildProperty({ // The `buildProperty` method is a utility function used for type checking
+        image: buildProperty({
+            dataType: "reference",
+            path: "images",
             name: "Imagem Principal",
-            dataType: "string",
-            storage: {
-                storagePath: "images",
-                acceptedFiles: ["image/*"]
-            }
         }),
         intro: {
             name: "Introdução",
@@ -60,14 +69,11 @@ const pagesCollection = buildCollection<Page>({
                 typeField: "type",
                 valueField: "value",
                 properties: {
-                    image: {
-                        dataType: "string",
+                    image: buildProperty({
+                        dataType: "reference",
+                        path: "images",
                         name: "Imagem",
-                        storage: {
-                            storagePath: "images",
-                            acceptedFiles: ["image/*"]
-                        }
-                    },
+                    }),
                     text: {
                         dataType: "string",
                         name: "Texto",
