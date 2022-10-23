@@ -17,18 +17,47 @@ Simply run the command `make up` to spin it up. Once the containers finish up bu
 - FireCMS 2.0.0-alpha.41
 - Material UI 5
 
-## Spinning It Up
+## Important Commands
 
-- `make up`: Spins up the necessary containers.
-- `make down`: Turn down containers and remove everything created with them. 
-- `make upBuild`: Spins up the necessary containers forcing their docker images to rebuild.
-- `make grant`: Grants admin access to all files in case you run into privilege problems.
-- `make accessAdmin`: Access admin container.
-- `make accessClient`: Access client container.
-- `make addAdmin`: Adds Node dependencies to admin container, must be run like `make deps="vite react" addAdmin`.
-- `make addClient`: Adds Node dependencies to client container, must be run like `make deps="vite react" addAdmin`.
-- `make install`: Install Node packages inside the containers.
-- `make build`: Run `yarn build` inside the containers.
+### make up
+
+Spins up the necessary containers.
+
+### make down
+
+Turn down containers and remove everything created with them. 
+
+### make upBuild
+
+Spins up the necessary containers forcing their docker images to rebuild.
+
+### make grant
+
+Grants admin access to all files in case you run into privilege problems.
+
+### make accessAdmin
+
+Access admin container.
+
+### make accessClient
+
+Access client container
+
+### make addAdmin
+
+Adds Node dependencies to admin container, must be run like `make deps="vite react" addAdmin`.
+
+### make addClient
+
+Adds Node dependencies to client container, must be run like `make deps="vite react" addClient`.
+
+### make install
+
+Install Node packages inside the containers.
+
+### make build
+
+Run `yarn build` inside the containers.
 
 ## Important Links (DEV)
 
