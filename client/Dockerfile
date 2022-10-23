@@ -1,7 +1,5 @@
 FROM node:16-alpine
 
-RUN npm i -g vite
-
 WORKDIR /app
 
 COPY package.json ./
