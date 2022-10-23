@@ -1,0 +1,36 @@
+# Natal Beneficente WebApp
+
+## Introduction
+
+This project is a simple webapp for the Natal Beneficente's event.
+
+## Initial Setup
+
+Simply run the command `make up` to spin it up. Once the containers finish up building the admin panel will be available at `localhost:3001` and the client at `localhost:3000`.
+
+## Dependencies
+
+- ReactJS 18.0.17
+- TypeScript *
+- Vite 3.1.0
+- Firebase 9
+- FireCMS 2.0.0-alpha.41
+- Material UI 5
+
+## Spinning It Up
+
+- `make up`: Spins up the necessary containers.
+- `make down`: Turn down containers and remove everything created with them. 
+- `make upBuild`: Spins up the necessary containers forcing their docker images to rebuild.
+- `make grant`: Grants admin access to all files in case you run into privilege problems.
+- `make accessAdmin`: Access admin container.
+- `make accessClient`: Access client container.
+- `make addAdmin`: Adds Node dependencies to admin container, must be run like `make deps="vite react" addAdmin`.
+- `make addClient`: Adds Node dependencies to client container, must be run like `make deps="vite react" addAdmin`.
+- `make install`: Install Node packages inside the containers.
+- `make build`: Run `yarn build` inside the containers.
+
+## Important Links (DEV)
+
+- `http://localhost:3000`: Client WebApp port.
+- `http://localhost:3001`: Admin WebApp port.

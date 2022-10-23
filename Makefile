@@ -31,3 +31,9 @@ accessAdmin:## Run an interactive bash session on back-end container
 
 accessClient:## Run an interactive bash session on front-end container
 	docker exec -it $(CLIENT) sh
+
+addAdmin: ## Adds selected dependencies to Admin container
+	docker exec -it $(ADMIN) sh -c "(cd $(ADMINCWD) && yarn add $(deps))"
+
+addClient:## Adds selected dependencies to Client container
+	docker exec -it $(CLIENT) sh -c "(cd $(ADMINCWD) && yarn add $(deps))"
