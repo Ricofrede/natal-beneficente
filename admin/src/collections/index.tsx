@@ -1,5 +1,5 @@
-import productsCollection from "./products";
+import pagesCollection from "./pages"
 
 export default [
-    productsCollection
+    pagesCollection
 ]
