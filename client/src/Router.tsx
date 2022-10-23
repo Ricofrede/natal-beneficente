@@ -6,7 +6,6 @@ import {
 } from "react-router-dom";
 
 import {
-    HomePage,
     MainPage
 } from './pages'
 
@@ -15,7 +14,7 @@ export default function Router() {
         <BrowserRouter>
             <Routes>
                 <Route path="/:id" element={<MainPage />} />
-                <Route path="/" element={<HomePage />} />
+                <Route path="/" element={<MainPage />} />
             </Routes>
         </BrowserRouter >
     )

@@ -8,14 +8,14 @@ export default function MainLayout({ children }: MainLayoutProps) {
     const { data } = useFetchPages()
 
     return (
-        <>
-            <div>
+        <div className='container'>
+            <div className='row'>
                 HEADER
             </div>
             {children}
-            <div>
+            <div className="row">
                 FOOTER
             </div>
-        </>
+        </div>
     )
 }
