@@ -19,6 +19,8 @@ const pagesCollection = buildCollection<Page>({
     singularName: "Pagina",
     path: "pages",
     customId: true,
+    inlineEditing: false,
+    group: 'Principal',
     permissions: ({ authController }) => ({
         edit: true,
         create: true,

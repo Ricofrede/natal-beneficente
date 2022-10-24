@@ -13,6 +13,8 @@ const imagesCollection = buildCollection<Image>({
     name: "Imagens",
     singularName: "Imagem",
     path: "images",
+    inlineEditing: false,
+    group: 'Ferramentas',
     permissions: ({ authController }) => ({
         edit: true,
         create: true,
