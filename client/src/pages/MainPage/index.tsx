@@ -2,6 +2,7 @@ import './styles.scss'
 
 import { useParams } from 'react-router'
 import useFetchPage from '../../hooks/useFetchPage'
+import { ContentReference } from '../../firebase/functions'
 
 import {
     TextBlock,
@@ -12,10 +13,10 @@ export default function MainPage() {
     let { id } = useParams()
 
     if (!id) {
-        id = 'home'
+        id = "home"
     }
 
-    const { data, loading, error } = useFetchPage(String(id)) // TODO: Deal with this TS
+    const { data, loading, error } = useFetchPage(id)
 
     if (loading) return <div>Loading...</div>
     if (error) return <div>{error}</div>
@@ -29,9 +30,10 @@ export default function MainPage() {
                 case 'text':
                     return <TextBlock text={String(content.value)} />
                     break;
-                // case 'image':
-                //     return <ImageBlock imageObj={content.value} />
-                //     break;
+                case 'image':
+                    const value: ContentReference = content.value
+                    return <ImageBlock value={value} />
+                    break;
 
                 default:
                     return <></>

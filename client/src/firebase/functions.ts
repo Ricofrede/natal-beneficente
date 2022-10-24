@@ -11,7 +11,7 @@ import { ref, getDownloadURL } from "firebase/storage";
 import { db, storage } from './init';
 export interface PageContent {
     type: string
-    value: string | Image
+    value: any
 }
 
 export interface Page {
@@ -28,7 +28,7 @@ export interface Image {
     image: string
 }
 
-interface ContentReference {
+export interface ContentReference {
     id: string
 }
 
@@ -58,47 +58,18 @@ export async function getPage(id: string): Promise<Page> {
 async function formatPage(info: DocumentData | undefined) {
     const mainImage = await getImage(info?.image)
 
-    const content: PageContent[] = []
-    for (const thisContent of info?.content) {
-
-        let newContent = thisContent
-        if (thisContent.type !== 'text') {
-            newContent = await formatPageContent(thisContent)
-        }
-
-        content.push(newContent)
-    }
-
     const formattedInfo: Page = {
         name: info?.name || '',
         intro: info?.intro || '',
         status: info?.status || 'private',
         image: mainImage,
-        content: content
+        content: info?.content || []
     }
 
     return formattedInfo;
 }
 
-async function formatPageContent(
-    content: {
-        type: string,
-        value: ContentReference
-    }
-): Promise<PageContent> {
-    if (!content?.type) return { type: '', value: '' }
-
-    const contentDeepCopy = JSON.parse(JSON.stringify(content))
-    let formattedContent: PageContent = contentDeepCopy
-
-    if (content.type === 'image') {
-        formattedContent.value = await getImage(content.value)
-    }
-
-    return formattedContent
-}
-
-async function getImage(imageObj: ContentReference): Promise<Image> {
+export async function getImage(imageObj: ContentReference): Promise<Image> {
     if (!imageObj?.id) return { title: '', caption: '', image: '' }
 
     const docRef = doc(db, 'images', imageObj.id)

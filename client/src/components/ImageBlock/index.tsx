@@ -1,18 +1,25 @@
-import { Image } from '../../firebase/functions'
+import { ContentReference, getImage } from '../../firebase/functions'
+import useFetchImage from '../../hooks/useFetchImage'
 
 import './styles.scss'
 
 interface ImageBlockProps {
-    imageObj: Image
+    value: ContentReference
 }
 
-export default function ImageBlock({ imageObj }: ImageBlockProps) {
+export default function ImageBlock({ value }: ImageBlockProps) {
+    const { data, loading, error } = useFetchImage(value)
+
+    if (loading) return <div>Loading...</div>
+    if (error) return <div>{error}</div>
+    if (!data) return <div>Error 404</div>
+
     return (
         <figure>
             <img
-                src={imageObj?.image}
-                title={imageObj?.title}
-                alt={imageObj?.title}
+                src={data?.image}
+                title={data?.title}
+                alt={data?.title}
             />
         </figure>
     )
