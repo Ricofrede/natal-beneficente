@@ -15,7 +15,7 @@ export default function useFetchPages() {
                 setLoading(false)
                 setError(null)
             } catch (e) {
-                setError(e)
+                setError(String(e))
                 setLoading(false)
                 setData([])
             }

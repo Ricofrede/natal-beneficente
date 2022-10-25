@@ -15,7 +15,7 @@ export default function useFetchImage(value: ContentReference) {
                 setLoading(false)
                 setError(null)
             } catch (e) {
-                setError(e)
+                setError(String(e))
                 setLoading(false)
                 setData(null)
             }
