@@ -1,0 +1,18 @@
+{
+  "projects": {
+    "default": "natal-beneficente"
+  },
+  "targets": {
+    "natal-beneficente": {
+      "hosting": {
+        "admin": [
+          "natal-beneficente-admin"
+        ],
+        "client": [
+          "natal-beneficente"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
