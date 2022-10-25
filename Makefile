@@ -1,5 +1,7 @@
 include .env
 
+ADMINLOCAL := admin
+CLIENTLOCAL := client
 ADMINCWD := /app
 CLIENTCWD := /app
 USER := $(shell /usr/bin/id -u)
@@ -16,8 +18,12 @@ down:## Stop and remove the containers that was created by 'make up' command
 	docker-compose down
 
 install:## Runs 'yarn install'
-	docker exec -it $(ADMIN) sh -c "(cd $(ADMINCWD) && yarn install)"
-	docker exec -it $(CLIENT) sh -c "(cd $(CLIENTCWD) && yarn install)"
+	docker exec -it $(ADMIN) sh -c "(cd $(ADMINCWD) && rm yarn.lock && yarn install --force)"
+	docker exec -it $(CLIENT) sh -c "(cd $(CLIENTCWD) && rm yarn.lock && yarn install --force)"
+
+sync:## Syncs the external node_modules with the container for better intellisense
+	cd $(ADMINLOCAL) && yarn install && cd ..
+	cd $(CLIENTLOCAL) && yarn install && cd ..
 
 build:## Runs 'yarn build'
 	docker exec -it $(ADMIN) sh -c "(cd $(ADMINCWD) && yarn build)"
