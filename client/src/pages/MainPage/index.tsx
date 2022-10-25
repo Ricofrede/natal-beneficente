@@ -46,13 +46,9 @@ export default function MainPage() {
         <div>
             <h1>{data.name}</h1>
             <h3>{data.intro}</h3>
-            <figure>
-                <img
-                    src={data.image?.image}
-                    title={data.image?.title}
-                    alt={data.image?.title}
-                />
-            </figure>
+            {data?.image ? (
+                <ImageBlock value={data.image} />
+            ) : <></>}
             {renderContents()}
         </div>
     )
