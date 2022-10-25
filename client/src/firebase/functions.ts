@@ -29,6 +29,14 @@ export interface Image {
     image: string
 }
 
+export interface Social {
+    name: string
+    iconClass?: string
+    importance?: number
+    status: 'private' | 'public'
+    url: string
+}
+
 export interface ContentReference {
     id: string
 }
@@ -73,4 +81,13 @@ async function grabFileURLFromStorage(path: string | null): Promise<string> {
     const url = await getDownloadURL(pathReference)
 
     return url
+}
+
+export async function getSocials(): Promise<Social[]> {
+    const col = collection(db, 'social')
+    const q = await query(col, where("status", "==", "public"))
+    const docs = await getDocs(q)
+    const list = docs.docs.map(doc => doc.data() as Social)
+
+    return list;
 }

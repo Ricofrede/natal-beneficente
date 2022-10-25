@@ -1,4 +1,5 @@
 import { useQuery } from "react-query"
+import { Footer } from "../components"
 
 import { getPages, Page } from '../firebase/functions'
 
@@ -14,14 +15,14 @@ export default function MainLayout({ children }: MainLayoutProps) {
     if (!data) return <div>Error 404</div>
 
     return (
-        <div className='container'>
-            <div className='row'>
+        <>
+            <div>
                 HEADER
             </div>
-            {children}
-            <div className="row">
-                FOOTER
+            <div className='container'>
+                {children}
             </div>
-        </div>
+            <Footer />
+        </>
     )
 }
