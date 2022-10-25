@@ -1,9 +1,9 @@
 import './styles.scss'
 
 import { useParams } from 'react-router'
-import useFetchPage from '../../hooks/useFetchPage'
-import { ContentReference } from '../../firebase/functions'
+import { useQuery } from 'react-query'
 
+import { ContentReference, getPage, Page } from '../../firebase/functions'
 import {
     TextBlock,
     ImageBlock
@@ -16,10 +16,10 @@ export default function MainPage() {
         id = "home"
     }
 
-    const { data, loading, error } = useFetchPage(id)
+    const { data, isLoading, error } = useQuery<Page, Error>(`page-"${id}`, () => getPage(String(id)))
 
-    if (loading) return <div>Loading...</div>
-    if (error) return <div>{error}</div>
+    if (isLoading) return <div>Loading...</div>
+    if (error) return <div>{error?.message}</div>
     if (!data) return <div>Error 404</div>
 
     function renderContents(): JSX.Element[] {

@@ -1,5 +1,6 @@
-import { ContentReference, getImage } from '../../firebase/functions'
-import useFetchImage from '../../hooks/useFetchImage'
+import { useQuery } from 'react-query'
+
+import { ContentReference, getImage, Image } from '../../firebase/functions'
 
 import './styles.scss'
 
@@ -8,10 +9,10 @@ interface ImageBlockProps {
 }
 
 export default function ImageBlock({ value }: ImageBlockProps) {
-    const { data, loading, error } = useFetchImage(value)
+    const { data, isLoading, error } = useQuery<Image, Error>(`image-${value.id}`, () => getImage(value))
 
-    if (loading) return <div>Loading...</div>
-    if (error) return <div>{error}</div>
+    if (isLoading) return <div>Loading...</div>
+    if (error) return <div>{error.message}</div>
     if (!data) return <div>Error 404</div>
 
     return (
