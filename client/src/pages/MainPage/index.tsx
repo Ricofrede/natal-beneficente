@@ -6,7 +6,8 @@ import { useQuery } from 'react-query'
 import { ContentReference, getPage, Page } from '../../firebase/functions'
 import {
     TextBlock,
-    ImageBlock
+    ImageBlock,
+    Hero
 } from '../../components'
 
 export default function MainPage() {
@@ -25,14 +26,14 @@ export default function MainPage() {
     function renderContents(): JSX.Element[] {
         if (!data?.content?.length) return [<></>]
 
-        return data.content.map(content => {
+        return data.content.map((content, index) => {
             switch (content.type) {
                 case 'text':
-                    return <TextBlock text={String(content.value)} />
+                    return <TextBlock key={`page-content-${index}`} text={String(content.value)} />
                     break;
                 case 'image':
                     const value: ContentReference = content.value
-                    return <ImageBlock value={value} />
+                    return <ImageBlock key={`page-content-${index}`} value={value} />
                     break;
 
                 default:
@@ -44,11 +45,7 @@ export default function MainPage() {
 
     return (
         <div>
-            <h1>{data.name}</h1>
-            <h3>{data.intro}</h3>
-            {data?.image ? (
-                <ImageBlock value={data.image} />
-            ) : <></>}
+            <Hero id={id} title={data.name} intro={data.intro} imageRef={data.image} />
             {renderContents()}
         </div>
     )

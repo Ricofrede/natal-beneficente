@@ -16,11 +16,12 @@ export default function ImageBlock({ value }: ImageBlockProps) {
     if (!data) return <div>Error 404</div>
 
     return (
-        <figure>
+        <figure className="d-flex justify-content-center">
             <img
                 src={data?.image}
                 title={data?.title}
                 alt={data?.title}
+                className="img-fluid shadow-2-strong"
             />
         </figure>
     )
