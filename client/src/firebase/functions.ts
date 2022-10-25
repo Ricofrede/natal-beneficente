@@ -4,7 +4,6 @@ import {
     getDoc,
     getDocs,
     where,
-    orderBy,
     query
 } from 'firebase/firestore/lite';
 import { ref, getDownloadURL } from "firebase/storage";
@@ -36,7 +35,7 @@ export interface ContentReference {
 
 export async function getPages(): Promise<Page[]> {
     const col = collection(db, 'pages')
-    const q = await query(col, where("status", "==", "public"), orderBy('importance'))
+    const q = await query(col, where("status", "==", "public"))
     const docs = await getDocs(q)
     const list = docs.docs.map(doc => doc.data() as Page)
 
