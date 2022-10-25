@@ -19,9 +19,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
             <div>
                 HEADER
             </div>
-            <div className='container'>
-                {children}
-            </div>
+            {children}
             <Footer />
         </>
     )

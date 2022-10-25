@@ -44,9 +44,11 @@ export default function MainPage() {
     }
 
     return (
-        <div>
+        <>
             <Hero id={id} title={data.name} intro={data.intro} imageRef={data.image} />
-            {renderContents()}
-        </div>
+            <div className="container">
+                {renderContents()}
+            </div>
+        </>
     )
 }
