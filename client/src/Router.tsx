@@ -7,11 +7,16 @@ import {
     MainPage
 } from './pages'
 
+import ScrollToTop from "./utils/ScrollToTop";
+
 export default function Router() {
     return (
-        <Routes>
-            <Route path="/:id" element={<MainPage />} />
-            <Route path="/" element={<MainPage />} />
-        </Routes>
+        <>
+            <ScrollToTop />
+            <Routes>
+                <Route path="/:id" element={<MainPage />} />
+                <Route path="/" element={<MainPage />} />
+            </Routes>
+        </>
     )
 }
