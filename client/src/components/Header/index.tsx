@@ -11,6 +11,22 @@ export default function Header() {
 	if (error) return <div>{error.message}</div>
 	if (!data) return <div>Error 404</div>
 
+	function renderMenu() {
+		if (!data || !data.length) return [<></>]
+
+		return data.map(page => {
+
+			const link = page.id === 'home' ? '/' : page.id
+			return (
+				<ul className="navbar-nav" key={page.id}>
+					<li className="nav-item">
+						<Link className="nav-link" to={link}>{page.name}</Link>
+					</li>
+				</ul>
+			)
+		})
+	}
+
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light bg-light">
 			<div className="container-fluid">
@@ -19,12 +35,7 @@ export default function Header() {
 					<i className="fas fa-bars"></i>
 				</button>
 				<div className="collapse navbar-collapse" id="navbarNav">
-					{data.map((link: Page) => (
-						<ul className="navbar-nav" key={link.id}>
-							<li className="nav-item">
-								<Link className="nav-link" to={link.id}>{link.name}</Link>
-							</li>
-						</ul>))}
+					{renderMenu()}
 				</div>
 			</div>
 		</nav>
