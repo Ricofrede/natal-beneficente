@@ -1,23 +1,31 @@
 import { useCallback } from "react";
-
 import { User as FirebaseUser } from "firebase/auth";
 import {
-    Authenticator,
+    Authenticator
 } from "@camberi/firecms";
+
+import usersCollection from "../collections/users";
 
 export default function useAuthenticator() {
     const myAuthenticator: Authenticator<FirebaseUser> = useCallback(async ({
         user,
-        authController
+        dataSource
     }) => {
 
-        // Example on editing response based on the user
-        if (user?.email?.includes("flanders")) {
-            throw Error("Stupid Flanders!");
+        if (!user?.uid) {
+            throw Error("No User ID found.");
+            return false
         }
 
-        const sampleUserRoles = await Promise.resolve(["admin"]);
-        authController.setExtra(sampleUserRoles);
+        const userDoc = await dataSource.fetchEntity({ path: `users`, entityId: user?.uid || '', collection: usersCollection })
+
+        if (
+            !userDoc ||
+            !userDoc.values.admin
+        ) {
+            throw Error("You don't have admin rights.");
+            return false
+        }
 
         return true;
     }, []);
