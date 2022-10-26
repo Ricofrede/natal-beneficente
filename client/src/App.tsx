@@ -1,4 +1,8 @@
 import {
+  BrowserRouter
+} from "react-router-dom";
+
+import {
   QueryClient,
   QueryClientProvider,
 } from 'react-query'
@@ -11,9 +15,11 @@ const queryClient = new QueryClient()
 export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <MainLayout>
-        <Router />
-      </MainLayout>
+      <BrowserRouter>
+        <MainLayout>
+          <Router />
+        </MainLayout>
+      </BrowserRouter>
     </QueryClientProvider>
   )
 }
