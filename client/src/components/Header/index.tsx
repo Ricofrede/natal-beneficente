@@ -12,22 +12,21 @@ export default function Header() {
 	if (!data) return <div>Error 404</div>
 
 	return (
-		<div className="container">
-			<nav className="navbar navbar-expand-lg navbar-light bg-light">
-				<Link className="navbar-brand" to="/">Natal Beneficiente</Link>
-				<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		<nav className="navbar navbar-expand-lg navbar-light bg-light">
+			<div className="container-fluid">
+				<a className="navbar-brand" href="#">Navbar</a>
+				<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 					<span className="navbar-toggler-icon"></span>
 				</button>
 				<div className="collapse navbar-collapse" id="navbarNav">
-					<ul className="navbar-nav">
-						{data.map((link: Page) => (
-							<li className="nav-item active" key={link.id}>
-								<Link className="nav-link" to={link.id}>{link.name} <span className="sr-only">(current)</span></Link>
+					{data.map((link: Page) => (
+						<ul className="navbar-nav" key={link.id}>
+							<li className="nav-item">
+								<Link className="nav-link" to={link.id}>{link.name}</Link>
 							</li>
-						))}
-					</ul>
+						</ul>))}
 				</div>
-			</nav>
-		</div>
+			</div>
+		</nav>
 	)
 }
