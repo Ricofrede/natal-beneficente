@@ -1,59 +1,54 @@
 import './styles.scss'
 
 import { useParams } from 'react-router'
-import useFetchPage from '../../hooks/useFetchPage'
-import { ContentReference } from '../../firebase/functions'
+import { useQuery } from 'react-query'
 
+import { ContentReference, getPage, Page } from '../../firebase/functions'
 import {
-    TextBlock,
-    ImageBlock
+	TextBlock,
+	ImageBlock,
+	Hero
 } from '../../components'
 
 export default function MainPage() {
-    let { id } = useParams()
+	let { id } = useParams()
 
-    if (!id) {
-        id = "home"
-    }
+	if (!id) {
+		id = 'home'
+	}
 
-    const { data, loading, error } = useFetchPage(id)
+	const { data, isLoading, error } = useQuery<Page, Error>(`page-"${id}`, () => getPage(String(id)))
 
-    if (loading) return <div>Loading...</div>
-    if (error) return <div>{error}</div>
-    if (!data) return <div>Error 404</div>
+	if (isLoading) return <div>Loading...</div>
+	if (error) return <div>{error?.message}</div>
+	if (!data) return <div>Error 404</div>
 
-    function renderContents(): JSX.Element[] {
-        if (!data?.content?.length) return [<></>]
+	function renderContents(): JSX.Element[] {
+		if (!data?.content?.length) return [<></>]
 
-        return data.content.map(content => {
-            switch (content.type) {
-                case 'text':
-                    return <TextBlock text={String(content.value)} />
-                    break;
-                case 'image':
-                    const value: ContentReference = content.value
-                    return <ImageBlock value={value} />
-                    break;
+		return data.content.map((content, index) => {
+			switch (content.type) {
+			case 'text':
+				return <TextBlock key={`page-content-${index}`} text={String(content.value)} />
+				break;
+			case 'image':
+				const value: ContentReference = content.value
+				return <ImageBlock key={`page-content-${index}`} value={value} />
+				break;
 
-                default:
-                    return <></>
-                    break;
-            }
-        })
-    }
+			default:
+				return <></>
+				break;
+			}
+		})
+	}
 
-    return (
-        <div>
-            <h1>{data.name}</h1>
-            <h3>{data.intro}</h3>
-            <figure>
-                <img
-                    src={data.image?.image}
-                    title={data.image?.title}
-                    alt={data.image?.title}
-                />
-            </figure>
-            {renderContents()}
-        </div>
-    )
+	return (
+		<>
+			<Hero id={id} title={data.name} intro={data.intro} imageRef={data.image} />
+			<div className="container">
+				{renderContents()}
+			</div>
+		</>
+	)
 }

@@ -1,21 +1,22 @@
 import {
-    BrowserRouter,
     Routes,
-    Route,
-    Link
+    Route
 } from "react-router-dom";
 
 import {
     MainPage
 } from './pages'
 
+import ScrollToTop from "./utils/ScrollToTop";
+
 export default function Router() {
     return (
-        <BrowserRouter>
+        <>
+            <ScrollToTop />
             <Routes>
                 <Route path="/:id" element={<MainPage />} />
                 <Route path="/" element={<MainPage />} />
             </Routes>
-        </BrowserRouter >
+        </>
     )
 }
