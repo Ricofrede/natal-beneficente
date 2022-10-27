@@ -13,8 +13,6 @@
 *.local
 **/build/**
 **/yarn.lock
-.env
-.env.prod
 
 # Editor directories and files
 .vscode/*
