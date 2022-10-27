@@ -12,6 +12,7 @@
 **/dist-ssr/**
 *.local
 **/build/**
+**/yarn.lock
 
 # Editor directories and files
 .vscode/*

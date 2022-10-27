@@ -31,6 +31,7 @@ Simply run the command `make up` to spin it up. Once the containers finish up bu
 | make accessClient | Access client container |
 | make addAdmin | Adds Node dependencies to admin container, must be run like `make deps="vite react" addAdmin` |
 | make addClient | Adds Node dependencies to client container, must be run like `make deps="vite react" addClient` |
+| make clean | Removes the images from the project to start brand new |
 | make install | Install Node packages inside the containers |
 | make sync | Runs `yarn install` locally (you must have yarn installed globally) to synchronize the external folder with the node_modules from the containers. Use this when you running into intellisense problems. Consider running `make install` before if this command alone doesn't solve the problem |
 | make build | Run `yarn build` inside the containers |
