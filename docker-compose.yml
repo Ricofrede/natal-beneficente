@@ -14,7 +14,7 @@ services:
       - ./admin:/app
       - /app/node_modules
     ports:
-      - 3001:5173
+      - 3001:3001
     networks:
       - net-natal
 
@@ -31,7 +31,7 @@ services:
       - ./client:/app
       - /app/node_modules
     ports:
-      - 3000:5173
+      - 3000:3000
     networks:
       - net-natal
 
