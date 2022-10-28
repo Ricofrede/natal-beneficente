@@ -2,7 +2,9 @@ const staticCacheName = 'site-static-v2';
 const dynamicCacheName = 'site-dynamic-v2';
 const assets = [
     '/',
-    '/index.html'
+    '/index.html',
+    '/android-chrome-192x192.png',
+    '/android-chrome-512x512.png'
 ];
 
 // install event
