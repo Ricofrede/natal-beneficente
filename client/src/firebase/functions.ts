@@ -14,7 +14,7 @@ export interface PageContent {
 }
 
 export interface Page {
-	name: string
+	name?: string
 	shortName: string
 	intro?: string
 	importance?: number

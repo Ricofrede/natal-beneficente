@@ -9,7 +9,6 @@ services:
     build:
       context: ./admin
     environment:
-      - REACT_APP_PUBLIC_URL=${REACT_APP_PUBLIC_URL_ADMIN}
       - VITE_FB_API_KEY=${VITE_FB_API_KEY}
       - VITE_FB_AUTH_DOMAIN=${VITE_FB_AUTH_DOMAIN}
       - VITE_FB_PROJECT_ID=${VITE_FB_PROJECT_ID}
@@ -32,7 +31,6 @@ services:
     build:
       context: ./client
     environment:
-      - REACT_APP_PUBLIC_URL=${REACT_APP_PUBLIC_URL_CLIENT}
       - VITE_FB_API_KEY=${VITE_FB_API_KEY}
       - VITE_FB_AUTH_DOMAIN=${VITE_FB_AUTH_DOMAIN}
       - VITE_FB_PROJECT_ID=${VITE_FB_PROJECT_ID}
