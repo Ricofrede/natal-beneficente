@@ -6,10 +6,10 @@
     "natal-beneficente": {
       "hosting": {
         "admin": [
-          "natal-beneficente-admin"
+          "admin-natal-feliz"
         ],
         "client": [
-          "natal-beneficente"
+          "projeto-natal-feliz"
         ]
       }
     }

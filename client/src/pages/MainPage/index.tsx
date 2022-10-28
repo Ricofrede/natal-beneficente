@@ -46,7 +46,7 @@ export default function MainPage() {
 	return (
 		<>
 			<Hero id={id} title={data.name} intro={data.intro} imageRef={data.image} />
-			<div className="container">
+			<div className="container contents-wrapper">
 				{renderContents()}
 			</div>
 		</>
