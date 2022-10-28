@@ -30,7 +30,6 @@ const pagesCollection = buildCollection<Page>({
     properties: {
         name: {
             name: "Nome",
-            validation: { required: true },
             dataType: "string"
         },
         shortName: {

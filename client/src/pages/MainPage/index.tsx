@@ -28,17 +28,17 @@ export default function MainPage() {
 
 		return data.content.map((content, index) => {
 			switch (content.type) {
-			case 'text':
-				return <TextBlock key={`page-content-${index}`} text={String(content.value)} />
-				break;
-			case 'image':
-				const value: ContentReference = content.value
-				return <ImageBlock key={`page-content-${index}`} value={value} />
-				break;
+				case 'text':
+					return <TextBlock key={`page-content-${index}`} text={String(content.value)} />
+					break;
+				case 'image':
+					const value: ContentReference = content.value
+					return <ImageBlock key={`page-content-${index}`} value={value} />
+					break;
 
-			default:
-				return <></>
-				break;
+				default:
+					return <></>
+					break;
 			}
 		})
 	}

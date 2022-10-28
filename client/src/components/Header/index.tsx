@@ -20,7 +20,7 @@ export default function Header() {
 			return (
 				<ul className="navbar-nav" key={page.id}>
 					<li className="nav-item">
-						<Link className="nav-link" to={link}>{page.name}</Link>
+						<Link className="nav-link" to={link}>{page.shortName}</Link>
 					</li>
 				</ul>
 			)
