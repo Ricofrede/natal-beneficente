@@ -7,11 +7,21 @@ import './styles.scss'
 export default function Header() {
 	const { data, isLoading, error } = useQuery<Page[], Error>('pages', () => getPages())
 
-	if (isLoading) return <div>Loading...</div>
-	if (error) return <div>{error.message}</div>
-	if (!data) return <div>Error 404</div>
-
 	function renderMenu() {
+
+		if (isLoading) {
+			const links = [1, 2, 3]
+			return links.map(link => {
+				return (
+					<p key={link} className="placeholder-glow" style={{ borderRadius: '15%', minWidth: '70px', margin: '0 10px' }}>
+						<span className="placeholder placeholder-lg col-12"></span>
+					</p>
+				)
+			})
+		}
+
+		if (error) return [<div>{error.message}</div>]
+
 		if (!data || !data.length) return [<></>]
 
 		return data.map(page => {
@@ -30,7 +40,7 @@ export default function Header() {
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light bg-light">
 			<div className="container-fluid">
-				<Link className="navbar-brand" to="/">Natal Beneficiente</Link>
+				<Link className="navbar-brand" to="/">Projeto Natal Feliz</Link>
 				<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 					<i className="fas fa-bars"></i>
 				</button>
