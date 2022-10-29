@@ -1,0 +1,24 @@
+@import './colors.scss';
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+    background-color: $yellow_weak;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: $blue;
+    font-family: 'Fredoka One', cursive;
+}
+
+p, a {
+    font-family: 'Roboto', sans-serif;
+}
+
+p {
+    color: black;
+}
+
+a {
+    color: $red;
+}
