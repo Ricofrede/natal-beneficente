@@ -32,7 +32,7 @@ export default function Hero({ id, title, intro, imageRef }: HeroProps) {
             >
                 <div className="hero-content mask">
                     <div className="d-flex justify-content-center align-items-center h-100">
-                        <div className="hero-text-wrapper text-white">
+                        <div className="hero-text-wrapper">
                             <h1 className="mb-3">{title}</h1>
                             <h4 className="mb-3">{intro}</h4>
                         </div>

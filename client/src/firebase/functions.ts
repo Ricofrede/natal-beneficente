@@ -48,7 +48,7 @@ export async function getPages(): Promise<Page[]> {
 	const docs = await getDocs(q)
 	const list = docs.docs.map(doc => ({ ...doc.data(), id: doc.id } as Page))
 
-	return list
+	return list.sort((a, b) => (b.importance || 0) - (a.importance || 0))
 }
 
 export async function getPage(id: string): Promise<Page> {
@@ -90,5 +90,5 @@ export async function getSocials(): Promise<Social[]> {
 	const docs = await getDocs(q)
 	const list = docs.docs.map(doc => doc.data() as Social)
 
-	return list;
+	return list.sort((a, b) => (b.importance || 0) - (a.importance || 0))
 }

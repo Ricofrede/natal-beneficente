@@ -1,11 +1,17 @@
+@import '../../assets/sass/colors.scss';
+
 .hero {
     height: 400px;
 
     .hero-content {
-        background-color: rgba(0, 0, 0, 0.2);
+        background-color: $green;
 
         .hero-text-wrapper {
             width: 80%;
+
+            h1, h2, h3, h4 {
+                color: $yellow_weak;
+            }
         }
     }
 }

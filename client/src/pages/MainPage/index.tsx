@@ -19,11 +19,11 @@ export default function MainPage() {
 
 	const { data, isLoading, error } = useQuery<Page, Error>(`page-"${id}`, () => getPage(String(id)))
 
-	if (isLoading) return <div>Loading...</div>
-	if (error) return <div>{error?.message}</div>
-	if (!data) return <div>Error 404</div>
+
 
 	function renderContents(): JSX.Element[] {
+		if (isLoading) return [<div>Loading...</div>]
+		if (error) return [<></>]
 		if (!data?.content?.length) return [<></>]
 
 		return data.content.map((content, index) => {
@@ -45,7 +45,13 @@ export default function MainPage() {
 
 	return (
 		<>
-			<Hero id={id} title={data.name} intro={data.intro} imageRef={data.image} />
+			{isLoading ? (
+				<div>Loading...</div>
+			) : (
+				data ? (
+					<Hero id={id} title={data.name} intro={data.intro} imageRef={data.image} />
+				) : <></>
+			)}
 			<div className="container contents-wrapper">
 				{renderContents()}
 			</div>
