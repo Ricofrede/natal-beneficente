@@ -2,6 +2,8 @@ include .env
 
 ADMINIMG := natal-beneficente_natal-admin
 CLIENTIMG := natal-beneficente_natal-client
+ADMINVOL := natal-beneficente_natal-admin-modules
+CLIENTVOL := natal-beneficente_natal-client-modules
 ADMINLOCAL := admin
 CLIENTLOCAL := client
 ADMINCWD := /app
@@ -21,6 +23,7 @@ down:## Stop and remove the containers that was created by 'make up' command
 
 clean:down ## Removes the images from the project to start brand new
 	docker image rm  $(ADMINIMG) $(CLIENTIMG)
+	docker volume rm $(ADMINVOL) $(CLIENTVOL)
 
 install:## Runs 'yarn install'
 	docker exec -it $(ADMIN) sh -c "(cd $(ADMINCWD) && rm yarn.lock && yarn install --force)"
