@@ -19,10 +19,21 @@ export default function MainPage() {
 
 	const { data, isLoading, error } = useQuery<Page, Error>(`page-"${id}`, () => getPage(String(id)))
 
+	function renderContentsLoading() {
+		return (
+			<div className="placeholder-glow justify-content-center align-items-center">
+				{[...Array(10).keys()].map(item => {
+					return (
+						<p key={`main-page-load-${item}`} className="placeholder w-75 d-block mx-auto rounded"></p>
+					)
+				})}
+			</div>
+		)
+	}
 
 
 	function renderContents(): JSX.Element[] {
-		if (isLoading) return [<div>Loading...</div>]
+		if (isLoading) return [renderContentsLoading()]
 		if (error) return [<></>]
 		if (!data?.content?.length) return [<></>]
 
@@ -45,13 +56,13 @@ export default function MainPage() {
 
 	return (
 		<>
-			{isLoading ? (
-				<div>Loading...</div>
-			) : (
-				data ? (
-					<Hero id={id} title={data.name} intro={data.intro} imageRef={data.image} />
-				) : <></>
-			)}
+			<Hero
+				id={id}
+				title={data?.name}
+				intro={data?.intro}
+				imageRef={data?.image}
+				textLoading={isLoading}
+			/>
 			<div className="container contents-wrapper">
 				{renderContents()}
 			</div>

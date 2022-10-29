@@ -17,7 +17,7 @@ services:
       - VITE_FB_APP_ID=${VITE_FB_APP_ID}
     volumes:
       - ./admin:/app
-      - /app/node_modules
+      - natal-admin-modules:/app/node_modules
     ports:
       - 3001:3001
     networks:
@@ -39,7 +39,7 @@ services:
       - VITE_FB_APP_ID=${VITE_FB_APP_ID}
     volumes:
       - ./client:/app
-      - /app/node_modules
+      - natal-client-modules:/app/node_modules
     ports:
       - 3000:3000
     networks:
@@ -47,3 +47,7 @@ services:
 
 networks:
   net-natal:
+
+volumes:
+  natal-admin-modules:
+  natal-client-modules:

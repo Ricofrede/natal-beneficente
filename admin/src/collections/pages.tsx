@@ -4,6 +4,8 @@ import {
     EntityReference
 } from "@camberi/firecms";
 
+import { childrenList, sponsorsList } from './components'
+
 type Page = {
     name: string;
     shortName: string;
@@ -79,7 +81,9 @@ const pagesCollection = buildCollection<Page>({
                         dataType: "string",
                         name: "Texto",
                         markdown: true
-                    }
+                    },
+                    childrenList: childrenList,
+                    sponsorsList: sponsorsList
                 }
             }
         })
