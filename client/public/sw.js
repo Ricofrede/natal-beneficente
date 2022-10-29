@@ -4,7 +4,8 @@ const assets = [
     '/',
     '/index.html',
     '/android-chrome-192x192.png',
-    '/android-chrome-512x512.png'
+    '/android-chrome-512x512.png',
+    'https://projeto-natal-feliz.web.app/android-chrome-512x512.png'
 ];
 
 // install event
