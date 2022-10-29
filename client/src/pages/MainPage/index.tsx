@@ -45,13 +45,13 @@ export default function MainPage() {
 
 	return (
 		<>
-			{isLoading ? (
-				<div>Loading...</div>
-			) : (
-				data ? (
-					<Hero id={id} title={data.name} intro={data.intro} imageRef={data.image} />
-				) : <></>
-			)}
+			<Hero
+				id={id}
+				title={data?.name}
+				intro={data?.intro}
+				imageRef={data?.image}
+				textLoading={isLoading}
+			/>
 			<div className="container contents-wrapper">
 				{renderContents()}
 			</div>

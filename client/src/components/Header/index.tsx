@@ -1,11 +1,12 @@
 import { useQuery } from 'react-query'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import { getPages, Page, Social, getSocials } from '../../firebase/functions'
 import './styles.scss'
 import logo from '../../assets/imgs/android-chrome-192x192.png'
 
 export default function Header() {
+	const { pathname } = useLocation()
 	const { data, isLoading, error } = useQuery<Page[], Error>('pages', () => getPages())
 	const {
 		data: socials, isLoading: socialsLoad, error: socialError
@@ -51,11 +52,17 @@ export default function Header() {
 
 		return data.map(page => {
 
-			const link = page.id === 'home' ? '/' : page.id
+			const link = page.id === 'home' ? '/' : `/${page.id}`
+			const activeClass = pathname === link ? 'active' : ''
 			return (
 				<ul className="navbar-nav" key={page.id}>
 					<li className="nav-item">
-						<Link className="nav-link" to={link}>{page.shortName}</Link>
+						<Link
+							className={`nav-link ${activeClass}`}
+							to={link}
+						>
+							{page.shortName}
+						</Link>
 					</li>
 				</ul>
 			)
