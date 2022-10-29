@@ -34,15 +34,15 @@ export default function Hero({ id, title, intro, imageRef, textLoading }: HeroPr
                                 <h1 className="mb-3">{title}</h1>
                             ) : textLoading ? (
                                 <span className="placeholder-glow justify-content-center align-items-center">
-                                    <h1 className="mb-3 placeholder w-25 d-block mx-auto"></h1>
+                                    <h1 className="mb-3 placeholder w-25 d-block mx-auto rounded"></h1>
                                 </span>
                             ) : <></>}
                             {intro ? (
                                 <h4 className="mb-3">{intro}</h4>
                             ) : textLoading ? (
                                 <span className="placeholder-glow justify-content-center align-items-center">
-                                    <h4 className="mb-3 placeholder w-75 d-block mx-auto"></h4>
-                                    <h4 className="mb-3 placeholder w-50 d-block mx-auto"></h4>
+                                    <h4 className="mb-3 placeholder w-75 d-block mx-auto rounded"></h4>
+                                    <h4 className="mb-3 placeholder w-50 d-block mx-auto rounded"></h4>
                                 </span >
                             ) : <></>}
                         </div>

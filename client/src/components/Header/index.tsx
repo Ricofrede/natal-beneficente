@@ -41,7 +41,7 @@ export default function Header() {
 			return links.map(link => {
 				return (
 					<p key={`load-header-${link}`} className="placeholder-glow" style={{ borderRadius: '15%', minWidth: '70px', margin: '0 10px' }}>
-						<span className="placeholder placeholder-lg col-12"></span>
+						<span className="placeholder placeholder-lg col-12 rounded"></span>
 					</p>
 				)
 			})
