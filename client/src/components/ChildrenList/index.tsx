@@ -11,9 +11,9 @@ export default function ChildrenList({ title }: ChildrenListProps) {
 	const { data: children, isLoading, error } = useQuery<Child[], Error>('children', () => getChildren())
 
 	function renderChildren() {
-		if (isLoading) return [<></>]
-		if (error) return [<></>]
-		if (!children || !children.length) return [<></>]
+		if (isLoading) return <></>
+		if (error) return <></>
+		if (!children || !children.length) return <></>
 
 		return children?.map((child, index) => {
 			return (
