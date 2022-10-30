@@ -5,6 +5,8 @@ import Hero from './Hero'
 import Header from './Header'
 import Meta from './Meta'
 import ChildrenList from './ChildrenList'
+import SponsorForm from './SponsorForm'
+import CustomModal from './CustomModal'
 
 export {
 	TextBlock,
@@ -13,5 +15,7 @@ export {
 	Header,
 	Hero,
 	Meta,
-	ChildrenList
+	ChildrenList,
+	SponsorForm,
+	CustomModal
 }

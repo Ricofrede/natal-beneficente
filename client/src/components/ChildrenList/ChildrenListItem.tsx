@@ -1,5 +1,7 @@
 import { useQuery } from 'react-query'
 import { getImage, Image, Child, ContentReference } from '../../firebase/functions'
+import { SponsorForm } from '../'
+import { useState } from 'react'
 
 
 interface ChildrenListItemProps {
@@ -7,6 +9,8 @@ interface ChildrenListItemProps {
 }
 
 export default function ChildrenListItem({ child }: ChildrenListItemProps) {
+	const [modalOpen, setModalOpen] = useState<boolean>(false)
+
 	const imageRef: ContentReference = child?.picture || { id: '' }
 	const { data: image, isLoading, error } = useQuery<Image, Error>(`image-child-list-item-${child.picture?.id}`, () => getImage(imageRef))
 
@@ -33,16 +37,20 @@ export default function ChildrenListItem({ child }: ChildrenListItemProps) {
 	}
 
 	return (
-		<div className="row g-0">
-			<div className="col-4">
-				{renderImage()}
-			</div>
-			<div className="col-8">
-				<div className="card-body">
-					<h5 className="card-title">{child.name} {genderIcon}</h5>
-					<p className="card-text">{child.intro}</p>
+		<>
+			{modalOpen ? <SponsorForm close={() => setModalOpen(false)} /> : <></>}
+			<div className="row g-0">
+				<div className="col-4">
+					{renderImage()}
+				</div>
+				<div className="col-8">
+					<div className="card-body">
+						<h5 className="card-title">{child.name} {genderIcon}</h5>
+						<p className="card-text">{child.intro}</p>
+						<button onClick={() => setModalOpen(true)}>Sponsor</button>
+					</div>
 				</div>
 			</div>
-		</div>
+		</>
 	)
 }
