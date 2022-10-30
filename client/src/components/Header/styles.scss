@@ -33,6 +33,18 @@
                 }
             }
         }
+
+        .nav-socials{
+            @media (max-width: $md) {
+                display: block;
+                margin: 0 20px;
+            }
+
+            .nav-item{
+                max-width: max-content;
+                display: inline-block;
+            }
+        }
     }
 
 
