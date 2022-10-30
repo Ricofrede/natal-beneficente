@@ -33,10 +33,10 @@ export default function MainPage() {
 	}
 
 
-	function renderContents(): JSX.Element[] {
-		if (isLoading) return [renderContentsLoading()]
-		if (error) return [<></>]
-		if (!data?.content?.length) return [<></>]
+	function renderContents() {
+		if (isLoading) return renderContentsLoading()
+		if (error) return <></>
+		if (!data?.content?.length) return <></>
 
 		return data.content.map((content, index) => {
 			switch (content.type) {
@@ -49,7 +49,7 @@ export default function MainPage() {
 					break
 				case 'childrenList':
 					const title: string = content.value?.title
-					return <ChildrenList title={title} />
+					return <ChildrenList key={`page-content-${index}`} title={title} />
 					break
 				default:
 					return <></>

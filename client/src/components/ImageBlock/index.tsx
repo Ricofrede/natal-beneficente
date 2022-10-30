@@ -11,9 +11,9 @@ interface ImageBlockProps {
 export default function ImageBlock({ value }: ImageBlockProps) {
 	const { data, isLoading, error } = useQuery<Image, Error>(`image-${value.id}`, () => getImage(value))
 
-	if (isLoading) return <div>Loading...</div>
-	if (error) return <div>{error.message}</div>
-	if (!data) return <div>Error 404</div>
+	if (isLoading) return <></>
+	if (error) return <></>
+	if (!data) return <></>
 
 	return (
 		<figure className="d-flex justify-content-center">

@@ -14,9 +14,9 @@ export default function Header() {
 
 
 	function renderSocials() {
-		if (isLoading) return [<></>]
-		if (error) return [<></>]
-		if (!socials || !socials.length) return [<></>]
+		if (socialsLoad) return <></>
+		if (socialError) return <></>
+		if (!socials || !socials.length) return <></>
 
 		return socials?.map((social, index) => {
 			return (
@@ -47,15 +47,15 @@ export default function Header() {
 			})
 		}
 
-		if (error) return [<></>]
-		if (!data || !data.length) return [<></>]
+		if (error) return <></>
+		if (!data || !data.length) return <></>
 
 		return data.map(page => {
 
 			const link = page.id === 'home' ? '/' : `/${page.id}`
 			const activeClass = pathname === link ? 'active' : ''
 			return (
-				<ul className="navbar-nav" key={page.id}>
+				<ul className="navbar-nav" key={`menu-link-${page.id}`}>
 					<li className="nav-item">
 						<Link
 							className={`nav-link ${activeClass}`}
