@@ -48,7 +48,8 @@ export default function MainPage() {
 					return <ImageBlock key={`page-content-${index}`} value={value} />
 					break;
 				case 'childrenList':
-					return <ChildrenList />
+					const title: string = content.value?.title
+					return <ChildrenList title={title} />
 					break
 				default:
 					return <></>

@@ -41,7 +41,7 @@ export interface Social {
 export interface Child {
 	name: string
 	gender?: string
-	picture?: Image
+	picture?: ContentReference
 	intro?: string
 	sponsor?: string
 }
@@ -106,6 +106,6 @@ export async function getChildren(): Promise<Child[]> {
 	const q = await query(col)
 	const docs = await getDocs(q)
 	const list = docs.docs.map(doc => doc.data() as Child)
-	
-	return list.sort((() => Math.random() - 0.5))
+
+	return list//.sort((() => Math.random() - 0.5))
 }
