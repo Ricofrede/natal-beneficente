@@ -38,6 +38,14 @@ export interface Social {
 	url: string
 }
 
+export interface Child {
+	name: string
+	gender?: string
+	picture?: Image
+	intro?: string
+	sponsor?: string
+}
+
 export interface ContentReference {
 	id: string
 }
@@ -91,4 +99,13 @@ export async function getSocials(): Promise<Social[]> {
 	const list = docs.docs.map(doc => doc.data() as Social)
 
 	return list.sort((a, b) => (b.importance || 0) - (a.importance || 0))
+}
+
+export async function getChildren(): Promise<Child[]> {
+	const col = collection(db, 'children')
+	const q = await query(col)
+	const docs = await getDocs(q)
+	const list = docs.docs.map(doc => doc.data() as Child)
+	
+	return list.sort((() => Math.random() - 0.5))
 }

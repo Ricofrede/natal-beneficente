@@ -7,7 +7,8 @@ import { ContentReference, getPage, Page } from '../../firebase/functions'
 import {
 	TextBlock,
 	ImageBlock,
-	Hero
+	Hero,
+	ChildrenList
 } from '../../components'
 
 export default function MainPage() {
@@ -46,7 +47,9 @@ export default function MainPage() {
 					const value: ContentReference = content.value
 					return <ImageBlock key={`page-content-${index}`} value={value} />
 					break;
-
+				case 'childrenList':
+					return <ChildrenList />
+					break
 				default:
 					return <></>
 					break;
