@@ -3,3 +3,19 @@
 .contents-wrapper{
     margin: 20px 0;
 }
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background: $yellow_weak;
+}
+
+::-webkit-scrollbar-thumb {
+	background: $green;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: $yellow_strong;
+}

@@ -29,7 +29,7 @@ const childrenCollection = buildCollection<Child>({
             validation: { required: true },
             dataType: "string"
         },
-        genre: {
+        gender: {
             name: "Gênero",
             dataType: "string",
             enumValues: {

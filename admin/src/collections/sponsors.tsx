@@ -8,7 +8,6 @@ type Sponsor = {
     name: string;
     genre: string;
     status: boolean;
-    picture: EntityReference;
     phone: string;
     isZap: boolean;
     email: string;
@@ -32,7 +31,7 @@ const sponsorCollection = buildCollection<Sponsor>({
             validation: { required: true },
             dataType: "string"
         },
-        genre: {
+        gender: {
             name: "Gênero",
             dataType: "string",
             enumValues: {
@@ -44,11 +43,6 @@ const sponsorCollection = buildCollection<Sponsor>({
             name: "Status",
             description: "Esta pessoa confirmou participação?",
             dataType: "boolean"
-        }),
-        picture: buildProperty({
-            dataType: "reference",
-            path: "images",
-            name: "Foto",
         }),
         phone: {
             name: "Telefone",
