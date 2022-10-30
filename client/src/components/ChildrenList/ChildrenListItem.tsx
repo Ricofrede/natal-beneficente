@@ -15,6 +15,18 @@ export default function ChildrenListItem({ child }) {
 		)
 	}
 
+	let genderIcon
+	switch (child.gender) {
+		case 'male':
+			genderIcon = <i className="fas fa-mars"></i>
+			break
+		case 'female':
+			genderIcon = <i className="fas fa-venus"></i>
+			break
+		default:
+			genderIcon = ''
+	}
+
 	return (
 		<div className="row g-0">
 			<div className="col-md-4">
@@ -22,8 +34,7 @@ export default function ChildrenListItem({ child }) {
 			</div>
 			<div className="col-md-8">
 				<div className="card-body">
-					<h5 className="card-title">{child.name}</h5>
-					<p className="card-text">{child.gender}</p>
+					<h5 className="card-title">{child.name} {genderIcon}</h5>
 					<p className="card-text">{child.intro}</p>
 				</div>
 			</div>

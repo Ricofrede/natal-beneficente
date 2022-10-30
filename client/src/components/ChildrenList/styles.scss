@@ -1,0 +1,15 @@
+@import '../../assets/sass/colors.scss';
+
+.childrenList {
+	max-height: 50rem;
+	overflow: scroll;
+	img {
+		object-fit: cover;
+		object-position: top;
+		width: 100%;
+		@media (min-width: $md) {
+			height: 10rem;
+			width: 10rem;
+		}
+	}
+}

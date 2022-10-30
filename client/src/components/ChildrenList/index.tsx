@@ -14,15 +14,17 @@ export default function ChildrenList() {
 		console.log(children)
 
 		return children?.map((child) => {
-			return (<div className="card mb-3" style={{ maxWidth: 540 }}>
+			return (
+			<div className="card mb-3" style={{ maxWidth: 540 }}>
 				<ChildrenListItem child={child} />
-			</div>)
+			</div>
+			)
 		})
 	}
 
 	return (
-		<>
+		<div className="childrenList">
 			{renderChildren()}
-		</>
+		</div>
 	)
 }

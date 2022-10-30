@@ -32,7 +32,7 @@ const sponsorCollection = buildCollection<Sponsor>({
             validation: { required: true },
             dataType: "string"
         },
-        genre: {
+        gender: {
             name: "Gênero",
             dataType: "string",
             enumValues: {
