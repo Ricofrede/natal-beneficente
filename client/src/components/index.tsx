@@ -4,6 +4,7 @@ import Footer from "./Footer";
 import Hero from "./Hero";
 import Header from "./Header";
 import Meta from "./Meta";
+import ChildrenList from "./ChildrenList";
 
 export {
 	TextBlock,
@@ -11,5 +12,6 @@ export {
 	Footer,
 	Header,
 	Hero,
-	Meta
+	Meta,
+	ChildrenList
 }
