@@ -6,7 +6,7 @@ import {
 
 type Sponsor = {
     name: string;
-    genre: string;
+    gender: string;
     status: boolean;
     phone: string;
     isZap: boolean;

@@ -6,7 +6,7 @@ import {
 
 type Child = {
     name: string;
-    genre: string;
+    gender: string;
     picture: EntityReference;
     intro: string;
     sponsor: EntityReference;
