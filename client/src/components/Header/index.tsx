@@ -10,7 +10,7 @@ export default function Header() {
 	const { data, isLoading, error } = useQuery<Page[], Error>('pages', () => getPages())
 	const {
 		data: socials, isLoading: socialsLoad, error: socialError
-	} = useQuery<Social[], Error>(`socials`, () => getSocials())
+	} = useQuery<Social[], Error>('socials', () => getSocials())
 
 
 	function renderSocials() {
