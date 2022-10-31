@@ -1,15 +1,15 @@
-import Markdown from 'markdown-to-jsx';
+import Markdown from 'markdown-to-jsx'
 
 import './styles.scss'
 
 interface TextBlockProps {
-    text: string
+	text: string
 }
 
 export default function TextBlock({ text }: TextBlockProps) {
-    return (
-        <Markdown>
-            {text}
-        </Markdown>
-    )
+	return (
+		<Markdown>
+			{text}
+		</Markdown>
+	)
 }

@@ -33,27 +33,27 @@ export default function MainPage() {
 	}
 
 
-	function renderContents(): JSX.Element[] {
-		if (isLoading) return [renderContentsLoading()]
-		if (error) return [<></>]
-		if (!data?.content?.length) return [<></>]
+	function renderContents() {
+		if (isLoading) return renderContentsLoading()
+		if (error) return <></>
+		if (!data?.content?.length) return <></>
 
 		return data.content.map((content, index) => {
 			switch (content.type) {
 				case 'text':
 					return <TextBlock key={`page-content-${index}`} text={String(content.value)} />
-					break;
+					break
 				case 'image':
 					const value: ContentReference = content.value
 					return <ImageBlock key={`page-content-${index}`} value={value} />
-					break;
+					break
 				case 'childrenList':
 					const title: string = content.value?.title
-					return <ChildrenList title={title} />
+					return <ChildrenList key={`page-content-${index}`} title={title} />
 					break
 				default:
 					return <></>
-					break;
+					break
 			}
 		})
 	}
