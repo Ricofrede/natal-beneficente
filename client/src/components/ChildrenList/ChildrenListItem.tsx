@@ -1,5 +1,6 @@
 import { useQuery } from 'react-query'
 import { getImage, Image, Child, ContentReference } from '../../firebase/functions'
+import imgPlaceholder from '../../assets/imgs/people-icon.png'
 
 
 interface ChildrenListItemProps {
@@ -13,10 +14,11 @@ export default function ChildrenListItem({ child }: ChildrenListItemProps) {
 	function renderImage() {
 		if (isLoading) return <></>
 		if (error) return <></>
-		if (!image) return <></>
 
+		const imageSrc = image?.image || imgPlaceholder
+		const imageAlt = image?.caption || 'Ícone Criança'
 		return (
-			<img src={image.image} className="img-fluid rounded-start" alt={image.caption} />
+			<img src={imageSrc} className="img-fluid rounded-start" alt={imageAlt} />
 		)
 	}
 
