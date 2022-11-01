@@ -7,7 +7,8 @@ module.exports = {
 		'eslint:recommended',
 		'plugin:react/recommended',
 		'plugin:@typescript-eslint/recommended',
-		'plugin:react/jsx-runtime'
+		'plugin:react/jsx-runtime',
+		'react-app/jest'
 	],
 	'overrides': [
 	],
@@ -39,5 +40,8 @@ module.exports = {
 			'never'
 		],
 		'no-case-declarations': 'off'
-	}
+	},
+	'types': [
+		['node', 'jest', '@testing-library/jest-dom']
+	]
 }
