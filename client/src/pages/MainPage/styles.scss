@@ -2,4 +2,7 @@
 
 .contents-wrapper{
     margin: 20px 0;
+    @media (min-width: $md) {
+        max-width: 70% !important;
+    }
 }
