@@ -1,9 +1,14 @@
 @import '../../assets/sass/colors.scss';
 
-.footer {
-    background-color: #f1f1f1;
+footer {
+    background-color: $green;
 
-    .footer-text-below {
-        background-color: rgba(0, 0, 0, 0.2);
+    h2, h5 {
+        color: $red;
+    }
+
+    a {
+        color: $yellow_weak;
+        font-weight: bolder;
     }
 }
