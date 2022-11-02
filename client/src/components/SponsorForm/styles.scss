@@ -1,1 +1,26 @@
 @import '../../assets/sass/colors.scss';
+
+.sponsor-form {
+    button {
+        font-family: 'Fredoka One', cursive;
+    }
+
+    label {
+        color: $blue;
+    }
+
+    .sponsor-btn{
+        &__cancel{
+            background-color: $red;
+            &:hover, &:focus {
+                background-color: $yellow_strong;
+            }
+        }
+        &__register{
+            background-color: $green;
+            &:hover, &:focus {
+                background-color: $yellow_strong;
+            }
+        }
+    }
+}

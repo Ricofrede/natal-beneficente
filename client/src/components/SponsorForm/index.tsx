@@ -1,37 +1,43 @@
 import './styles.scss'
 
 import { CustomModal } from '../'
-import { useFormik } from 'formik';
+import { useState } from 'react';
 
 interface SponsorFormProps {
     close: () => void
 }
 
 export default function SponsorForm({ close }: SponsorFormProps) {
-    const formik = useFormik({
-        initialValues: {
-            name: '',
-            email: '',
-            phone: '',
-            gender: '',
-            isZap: false
-        },
-        onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
-        }
-    });
+    const [name, setName] = useState<string>('')
+    const [email, setEmail] = useState<string>('')
+    const [phone, setPhone] = useState<string>('')
+    const [gender, setGender] = useState<string>('')
+    const [isZap, setIsZap] = useState<boolean>(false)
+
+    function handleSubmit(e: any) {
+        e.preventDefault()
+
+        alert(JSON.stringify({
+            name,
+            email,
+            phone,
+            gender,
+            isZap
+        }))
+    }
 
     return (
         <CustomModal close={close}>
-            <form onSubmit={formik.handleSubmit} className="row">
+            <form onSubmit={handleSubmit} className="row sponsor-form">
                 <div className="mb-4 col-md-6">
                     <label className="form-label" htmlFor="sponsor-name">Nome</label>
                     <input
                         type="text"
                         id="sponsor-name"
                         className="form-control"
-                        onChange={formik.handleChange}
-                        value={formik.values.name}
+                        onChange={(e) => setName(e.target.value)}
+                        value={name}
+                        required
                     />
                 </div>
 
@@ -41,8 +47,9 @@ export default function SponsorForm({ close }: SponsorFormProps) {
                         type="email"
                         id="sponsor-email"
                         className="form-control"
-                        onChange={formik.handleChange}
-                        value={formik.values.email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        value={email}
+                        required
                     />
                 </div>
 
@@ -52,8 +59,9 @@ export default function SponsorForm({ close }: SponsorFormProps) {
                         type="tel"
                         id="sponsor-phone"
                         className="form-control"
-                        onChange={formik.handleChange}
-                        value={formik.values.phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                        value={phone}
+                        required
                     />
                 </div>
 
@@ -63,8 +71,9 @@ export default function SponsorForm({ close }: SponsorFormProps) {
                         id="sponsor-gender"
                         className="form-select"
                         aria-label="Default select example"
-                        onChange={formik.handleChange}
-                        value={formik.values.gender}
+                        onChange={(e) => setGender(e.target.value)}
+                        value={gender}
+                        required
                     >
                         <option value="male">Masculino</option>
                         <option value="female">Feminino</option>
@@ -80,14 +89,14 @@ export default function SponsorForm({ close }: SponsorFormProps) {
                         className="form-check-input me-2"
                         type="checkbox"
                         id="sponsor-zap"
-                        onChange={formik.handleChange}
-                        checked={formik.values.isZap}
+                        onChange={(e) => setIsZap(e.target.checked)}
+                        checked={isZap}
                     />
                 </div>
 
                 <div className="row mb-4 justify-content-around">
-                    <button onClick={close} type="button" className="btn btn-secondary mb-2 col-md-3" data-mdb-dismiss="modal">Cancelar</button>
-                    <button type="submit" className="btn btn-primary mb-2 col-md-3">Cadastrar</button>
+                    <button onClick={close} type="button" className="btn btn-secondary mb-2 col-md-3 sponsor-btn__cancel" data-mdb-dismiss="modal">Cancelar</button>
+                    <button type="submit" className="btn btn-primary mb-2 col-md-3 sponsor-btn__register">Cadastrar</button>
                 </div>
             </form>
         </CustomModal>
