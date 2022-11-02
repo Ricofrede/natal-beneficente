@@ -4,7 +4,9 @@ import {
 	getDoc,
 	getDocs,
 	where,
-	query
+	query,
+	setDoc,
+	updateDoc
 } from 'firebase/firestore/lite'
 import { ref, getDownloadURL } from 'firebase/storage'
 import { db, storage } from './init'
@@ -39,6 +41,7 @@ export interface Social {
 }
 
 export interface Child {
+	id: string
 	name: string
 	gender?: string
 	picture?: ContentReference
@@ -105,7 +108,33 @@ export async function getChildren(): Promise<Child[]> {
 	const col = collection(db, 'children')
 	const q = await query(col)
 	const docs = await getDocs(q)
-	const list = docs.docs.map(doc => doc.data() as Child)
+	const list = docs.docs.map(doc => ({ ...doc.data(), id: doc.id } as Child))
 
 	return list//.sort((() => Math.random() - 0.5))
+}
+
+export async function addSponsor(
+	name: string,
+	email: string,
+	phone: string,
+	gender: string,
+	isZap: boolean,
+	childId: string
+) {
+	const sponsorRef = doc(db, 'sponsors', email)
+	const childRef = doc(db, 'children', childId)
+
+	await setDoc(sponsorRef, {
+		name,
+		phone,
+		email,
+		gender,
+		isZap,
+		status: false,
+		child: childRef
+	})
+	await updateDoc(childRef, {
+		sponsor: sponsorRef
+	})
+
 }
