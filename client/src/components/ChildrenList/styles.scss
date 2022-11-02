@@ -16,6 +16,17 @@
 			margin: 10px auto;
 			padding: 0;
 
+			.card-body {
+				.card-title {
+					color: $green;
+				}
+
+				button {
+					font-family: 'Fredoka One', cursive;
+					background-color: $green;
+				}
+			}
+
 			img {
 				object-fit: cover;
 				object-position: top;

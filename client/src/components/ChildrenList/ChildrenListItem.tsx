@@ -29,10 +29,10 @@ export default function ChildrenListItem({ child }: ChildrenListItemProps) {
 	let genderIcon
 	switch (child.gender) {
 		case 'male':
-			genderIcon = <i className="fas fa-mars"></i>
+			genderIcon = <i className="fas fa-mars" style={{ color: 'blue' }}></i>
 			break
 		case 'female':
-			genderIcon = <i className="fas fa-venus"></i>
+			genderIcon = <i className="fas fa-venus" style={{ color: 'pink' }}></i>
 			break
 		default:
 			genderIcon = ''
@@ -40,7 +40,7 @@ export default function ChildrenListItem({ child }: ChildrenListItemProps) {
 
 	return (
 		<>
-			{modalOpen ? <SponsorForm close={() => setModalOpen(false)} /> : <></>}
+			{modalOpen ? <SponsorForm close={() => setModalOpen(false)} childId={child.id} childName={child.name} /> : <></>}
 			<div className="row g-0">
 				<div className="col-4">
 					{renderImage()}
@@ -49,7 +49,14 @@ export default function ChildrenListItem({ child }: ChildrenListItemProps) {
 					<div className="card-body">
 						<h5 className="card-title">{child.name} {genderIcon}</h5>
 						<p className="card-text">{child.intro}</p>
-						<button onClick={() => setModalOpen(true)}>Sponsor</button>
+						{!child.sponsor ? (
+							<button
+								onClick={() => setModalOpen(true)}
+								className="btn btn-primary"
+							>Apadrinhe esta criança!</button>
+						) : (
+							<span>Apadrinhado(a)!</span>
+						)}
 					</div>
 				</div>
 			</div>
