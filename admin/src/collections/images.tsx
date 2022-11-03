@@ -15,6 +15,8 @@ const imagesCollection = buildCollection<Image>({
     path: "images",
     inlineEditing: false,
     group: 'Ferramentas',
+    defaultSize: "s",
+    icon: 'Photo',
     permissions: ({ authController }) => ({
         edit: true,
         create: true,

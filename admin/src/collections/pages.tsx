@@ -1,7 +1,8 @@
 import {
     buildCollection,
     buildProperty,
-    EntityReference
+    EntityReference,
+    CollectionSize
 } from "@camberi/firecms";
 
 import { childrenList, sponsorsList } from './components'
@@ -23,6 +24,8 @@ const pagesCollection = buildCollection<Page>({
     customId: true,
     inlineEditing: false,
     group: 'Principal',
+    defaultSize: "s",
+    icon: 'Article',
     permissions: ({ authController }) => ({
         edit: true,
         create: true,

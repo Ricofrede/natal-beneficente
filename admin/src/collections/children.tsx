@@ -18,6 +18,8 @@ const childrenCollection = buildCollection<Child>({
 	path: 'children',
 	inlineEditing: false,
 	group: 'Apadrinhamento',
+	defaultSize: "s",
+	icon: 'ChildCare',
 	permissions: ({ authController }) => ({
 		edit: true,
 		create: true,
