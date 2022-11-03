@@ -51,3 +51,6 @@ addAdmin: ## Adds selected dependencies to Admin container
 
 addClient:## Adds selected dependencies to Client container
 	docker exec -it $(CLIENT) sh -c "(cd $(ADMINCWD) && yarn add $(deps))"
+
+addClientDev:## Adds selected dependencies to Client container with --dev
+	docker exec -it $(CLIENT) sh -c "(cd $(ADMINCWD) && yarn add $(deps) --dev)"
