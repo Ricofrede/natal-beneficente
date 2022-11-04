@@ -20,6 +20,8 @@ const sponsorCollection = buildCollection<Sponsor>({
 	path: 'sponsors',
 	inlineEditing: false,
 	group: 'Apadrinhamento',
+	defaultSize: "s",
+	icon: 'EscalatorWarning',
 	permissions: ({ authController }) => ({
 		edit: true,
 		create: true,

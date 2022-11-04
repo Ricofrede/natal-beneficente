@@ -16,6 +16,8 @@ const socialCollection = buildCollection<Social>({
     path: "social",
     inlineEditing: false,
     group: 'Principal',
+    defaultSize: "s",
+    icon: 'Share',
     permissions: ({ authController }) => ({
         edit: true,
         create: true,

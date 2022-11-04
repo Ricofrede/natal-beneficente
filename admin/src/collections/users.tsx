@@ -14,6 +14,8 @@ const usersCollection = buildCollection<User>({
     inlineEditing: false,
     group: 'Ferramentas',
     customId: true,
+    defaultSize: "s",
+    icon: 'Badge',
     permissions: ({ authController }) => ({
         edit: false,
         create: true,

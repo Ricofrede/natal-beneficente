@@ -17,10 +17,16 @@ export default function SponsorForm({ close, childId, childName }: SponsorFormPr
     const [gender, setGender] = useState<string>('')
     const [isZap, setIsZap] = useState<boolean>(false)
 
+    const [sending, setSending] = useState<boolean>(false)
+    const [sendMsg, setSendMsg] = useState<string>('')
+
     async function handleSubmit(e: any) {
         e.preventDefault()
 
         if (!name || !phone || !email) return
+
+        setSendMsg('Enviando')
+        setSending(true)
 
         await addSponsor(
             name,
@@ -31,12 +37,29 @@ export default function SponsorForm({ close, childId, childName }: SponsorFormPr
             childId
         )
 
+        setSendMsg('Muito obrigado, em breve estaremos entrando em contato com você!')
+    }
+
+    function closeAll() {
+        setSending(false)
         close()
     }
 
     return (
         <CustomModal close={close}>
             <>
+                {sending ? (
+                    <CustomModal close={close}>
+                        <div className="sponsor-thanks-modal container" style={{ minHeight: '400px' }}>
+                            <div className="row">
+                                <h2>{sendMsg}</h2>
+                            </div>
+                            <div className="row justify-content-center">
+                                <button onClick={closeAll} className="btn btn-secondary">Fechar</button>
+                            </div>
+                        </div>
+                    </CustomModal>
+                ) : <></>}
                 <div className="row">
                     <h2 className="text-center">Obrigado por fazer o Natal de {childName} mais feliz!</h2>
                     <h5 className="text-center">Agora só precisamos saber um pouquinho mais sobre você!</h5>
