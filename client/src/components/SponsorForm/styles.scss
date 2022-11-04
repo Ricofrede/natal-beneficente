@@ -24,3 +24,20 @@
         }
     }
 }
+
+.sponsor-thanks-modal {
+    width: 80%;
+
+    h2 {
+        text-align: center;
+    }
+
+    .row {
+        margin: 40px auto;
+    }
+
+    button {
+        width: max-content;
+        background-color: $green;
+    }
+}
