@@ -8,7 +8,7 @@ interface TextBlockProps {
 
 export default function TextBlock({ text }: TextBlockProps) {
 	return (
-		<Markdown>
+		<Markdown className='text-block'>
 			{text}
 		</Markdown>
 	)
