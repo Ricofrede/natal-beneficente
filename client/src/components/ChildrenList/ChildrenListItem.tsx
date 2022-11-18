@@ -3,6 +3,7 @@ import { getImage, Image, Child, ContentReference } from '../../firebase/functio
 import { SponsorForm } from '../'
 import { useState } from 'react'
 import imgPlaceholder from '../../assets/imgs/people-icon.png'
+import { CustomModal } from '../'
 
 
 interface ChildrenListItemProps {
@@ -10,6 +11,7 @@ interface ChildrenListItemProps {
 }
 
 export default function ChildrenListItem({ child }: ChildrenListItemProps) {
+	const [imageOpen, setImageOpen] = useState<boolean>(false)
 	const [modalOpen, setModalOpen] = useState<boolean>(false)
 
 	const imageRef: ContentReference = child?.picture || { id: '' }
@@ -22,7 +24,19 @@ export default function ChildrenListItem({ child }: ChildrenListItemProps) {
 		const imageSrc = image?.image || imgPlaceholder
 		const imageAlt = image?.caption || 'Ícone Criança'
 		return (
-			<img src={imageSrc} className="img-fluid rounded-start" alt={imageAlt} />
+			<>
+				{imageOpen ? (
+					<CustomModal close={() => setImageOpen(false)}>
+						<figure className="d-flex justify-content-center">
+							<img src={imageSrc} className="img-fluid" alt={imageAlt} />
+						</figure>
+					</CustomModal>
+				) : <></>}
+				<div className="card-image" onClick={() => setImageOpen(true)}>
+					<i className="fas fa-3x fa-search-plus"></i>
+					<img src={imageSrc} className="img-fluid rounded-start" alt={imageAlt} />
+				</div>
+			</>
 		)
 	}
 
