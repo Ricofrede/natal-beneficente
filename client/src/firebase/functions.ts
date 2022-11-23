@@ -121,7 +121,10 @@ export async function addSponsor(
 	isZap: boolean,
 	childId: string
 ) {
-	const sponsorRef = doc(db, 'sponsors', email)
+	const now = (new Date()).getTime()
+	const newSponsorId = `${email}-${now}`
+
+	const sponsorRef = doc(db, 'sponsors', newSponsorId)
 	const childRef = doc(db, 'children', childId)
 
 	await setDoc(sponsorRef, {
