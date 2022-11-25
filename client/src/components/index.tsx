@@ -7,6 +7,7 @@ import Meta from './Meta'
 import ChildrenList from './ChildrenList'
 import SponsorForm from './SponsorForm'
 import CustomModal from './CustomModal'
+import SponsorList from './SponsorList'
 
 export {
 	TextBlock,
@@ -17,5 +18,6 @@ export {
 	Meta,
 	ChildrenList,
 	SponsorForm,
-	CustomModal
+	CustomModal,
+	SponsorList
 }

@@ -49,6 +49,17 @@ export interface Child {
 	sponsor?: string
 }
 
+export interface Sponsor {
+	id: string
+	name: string
+	gender?: string
+	status: boolean
+	phone?: string;
+	isZap: boolean;
+	email?: string;
+	child: ContentReference
+}
+
 export interface ContentReference {
 	id: string
 }
@@ -113,6 +124,16 @@ export async function getChildren(): Promise<Child[]> {
 	return list//.sort((() => Math.random() - 0.5))
 }
 
+export async function getChild(
+	childObj: ContentReference
+): Promise<Child> {
+	const docRef = doc(db, 'children', childObj?.id)
+	const docSnap = await getDoc(docRef)
+	const info = { ...docSnap.data(), id: docSnap.id } as Child
+
+	return info
+}
+
 export async function addSponsor(
 	name: string,
 	email: string,
@@ -140,4 +161,21 @@ export async function addSponsor(
 		sponsor: sponsorRef
 	})
 
+}
+
+export async function findSponsor(
+	search: string
+): Promise<Sponsor[]> {
+	const isEmail = search.indexOf('@') > -1
+
+	const col = collection(db, 'sponsors')
+
+	const q1 = await query(col, where('email', '==', search))
+	const q2 = await query(col, where('phone', '==', search))
+
+	const docs = await getDocs(isEmail ? q1 : q2)
+
+	const list = docs.docs.map(doc => ({ ...doc.data(), id: doc.id } as Sponsor))
+
+	return list
 }
