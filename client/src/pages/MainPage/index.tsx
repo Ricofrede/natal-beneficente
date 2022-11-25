@@ -8,7 +8,8 @@ import {
 	TextBlock,
 	ImageBlock,
 	Hero,
-	ChildrenList
+	ChildrenList,
+	SponsorList
 } from '../../components'
 
 export default function MainPage() {
@@ -48,8 +49,12 @@ export default function MainPage() {
 					return <ImageBlock key={`page-content-${index}`} value={value} />
 					break
 				case 'childrenList':
-					const title: string = content.value?.title
-					return <ChildrenList key={`page-content-${index}`} title={title} />
+					const childrenTitle: string = content.value?.title
+					return <ChildrenList key={`page-content-${index}`} title={childrenTitle} />
+					break
+				case 'sponsorsList':
+					const sponsortTitle: string = content.value?.title
+					return <SponsorList key={`page-content-${index}`} title={sponsortTitle} />
 					break
 				default:
 					return <></>
